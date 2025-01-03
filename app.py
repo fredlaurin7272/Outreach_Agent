@@ -19,7 +19,9 @@ from crewai_tools import DirectoryReadTool, FileReadTool, SerperDevTool, BaseToo
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "your_openai_api_key_here")
 if OPENAI_API_KEY is None:
     raise ValueError("OPENAI_API_KEY not set in the environment")
-os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
+os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+# os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
+
 
 # st.secrets["OPENAI_API_KEY"]
 
