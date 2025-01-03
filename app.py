@@ -1,3 +1,7 @@
+# __import__('pysqlite3')
+# import sys
+# sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 import streamlit as st
 
 try:
@@ -5,20 +9,19 @@ try:
     import sys
     sys.modules["sqlite3"] = sqlite3
 except ImportError:
-    st.error("pysqlite3 is required for updated SQLite. Add it to requirements.txt.")
+   st.error("Powered by Mila")
 
 import os
-from utils import get_openai_api_key
 from crewai import Agent, Task, Crew
 from crewai_tools import DirectoryReadTool, FileReadTool, SerperDevTool, BaseTool
 
 # Set up API keys (replace with your actual logic or environment variables)
-#openai_api_key = get_openai_api_key()
-
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "your_openai_api_key_here")
 if OPENAI_API_KEY is None:
     raise ValueError("OPENAI_API_KEY not set in the environment")
-os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY  # Ensure the environment variable is set
+os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
+
+# st.secrets["OPENAI_API_KEY"]
 
 SERPER_API_KEY = os.getenv("SERPER_API_KEY", "your_serper_api_key_here")
 if SERPER_API_KEY is None:
@@ -107,25 +110,14 @@ crew = Crew(
 st.title("Outreach Multi-Agent App")
 
 # Input fields
-topic = st.text_input("Enter Topic:")
-
-if st.button("Generate Content"):
-    if topic:
-        result = crew.kickoff(inputs={"topic": topic})
-        st.subheader("Generated Result:")
-        st.write(result.raw)
-    else:
-        st.error("Please enter a topic.")
-
-# Input fields
 lead_name = st.text_input("Lead Name", value="DeepLearningAI")
 industry = st.text_input("Industry", value="Online Learning Platform")
 key_decision_maker = st.text_input("Key Decision Maker", value="Andrew Ng")
 position = st.text_input("Position", value="CEO")
 milestone = st.text_input("Milestone", value="Product Launch")
 
-# if st.button("Generate Content"):
-if lead_name:
+if st.button("Generate Content"):
+# if lead_name:
     if lead_name and industry and key_decision_maker and position and milestone:
         inputs = {
             "lead_name": lead_name,
