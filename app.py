@@ -38,7 +38,7 @@ sales_rep_agent = Agent(
     role="Sales Representative",
     goal="Identify high-value leads that match our ideal customer profile",
     backstory=(
-        "As part of CrewAI's dynamic sales team, your mission is to identify potential leads "
+        "As part of Mila Quebec AI Institute's dynamic sales team, your mission is to identify potential leads "
         "by analyzing data, trends, and interactions. Your work is crucial in driving the company's growth."
     ),
     allow_delegation=False,
@@ -49,7 +49,7 @@ lead_sales_rep_agent = Agent(
     role="Lead Sales Representative",
     goal="Nurture leads with personalized communications",
     backstory=(
-        "You are the bridge between potential clients and CrewAI's solutions. "
+        "You are the bridge between potential clients and Mila Quebec AI Institute's solutions. "
         "Your role involves creating engaging messages that convert interest into action."
     ),
     allow_delegation=False,
