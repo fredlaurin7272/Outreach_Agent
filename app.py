@@ -30,7 +30,7 @@ if SERPER_API_KEY is None:
     raise ValueError("SERPER_API_KEY not set in the environment")
 os.environ["SERPER_API_KEY"] = SERPER_API_KEY
 
-os.environ["OPENAI_MODEL_NAME"] = 'gpt-3.5-turbo'
+os.environ["OPENAI_MODEL_NAME"] = 'gpt-4o-mini'
 
 
 # Define agents
